@@ -73,4 +73,6 @@ test("Register user", async ({ page }) => {
   );
 
   await receiveSpecialOffersCheckBox.click();
+
+  await page.close();
 });
