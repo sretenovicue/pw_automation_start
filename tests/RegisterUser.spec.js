@@ -1,5 +1,4 @@
 const { test, expect } = require("@playwright/test");
-const { faker } = require("@faker-js/faker");
 const{LoginPage} = require('../pom/LoginPage')
 
 test("Register user", async ({ page }) => {
@@ -19,5 +18,12 @@ await loginPage.enterAccountInformation();
 await loginPage.enterDateOfBirt();
 
 await loginPage.chechRadioBtns();
+
+await loginPage.createAccount();
+
+await loginPage.clickOnContinueBtn();
+
+await loginPage.deleteAccount();
+
 
 });
