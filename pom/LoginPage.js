@@ -1,5 +1,6 @@
 const { expect, test } = require("@playwright/test");
 const { faker } = require("@faker-js/faker");
+const {data, dataObject} = require('../testData/data')
 
 class LoginPage {
   constructor(page) {
@@ -94,8 +95,8 @@ class LoginPage {
   }
 
   async fillSignUpForm() {
-    await this.nameTextBox.fill("Test Playwright");
-    await this.emailTextBox.fill("test.playwright@gmail.com");
+    await this.nameTextBox.fill(dataObject.title);
+    await this.emailTextBox.fill(dataObject.email);
     await this.newSignUpBtn.click();
   }
 
@@ -105,15 +106,15 @@ class LoginPage {
   }
 
   async enterAccountInformation() {
-    expect(await this.expectedName).toMatch("Test Playwright");
-    expect(await this.expectedEmail).toMatch("test.playwright@gmail.com");
-    await this.signUpPassword.fill("Lozinka123!");
+    expect(await this.expectedName).toMatch(dataObject.title);
+    expect(await this.expectedEmail).toMatch(dataObject.email);
+    await this.signUpPassword.fill(dataObject.password);
   }
 
   async enterDateOfBirt() {
-    await this.selectDay.selectOption("25");
-    await this.selectMonth.selectOption("7");
-    await this.selectYear.selectOption("1985");
+    await this.selectDay.selectOption(dataObject.day);
+    await this.selectMonth.selectOption(dataObject.month);
+    await this.selectYear.selectOption(dataObject.year);
   }
 
   async chechRadioBtns() {
@@ -133,7 +134,7 @@ class LoginPage {
 
     await this.addressAddress2.fill(faker.location.streetAddress({ useFullAddress: true }));
 
-    await this.countryDropDownMenu.selectOption("Singapore");
+    await this.countryDropDownMenu.selectOption(dataObject.country);
 
     await this.addressState.fill(faker.location.country());
 
@@ -150,9 +151,10 @@ class LoginPage {
     await expect(this.textForLoggedUser).toBeVisible();
   }
 
-  async deleteAccount() {
+  async deleteAccountAndCloseApp() {
     await this.deleteAccountBtn.click();
-    await expect(this.deleteAccountMsg).toHaveText("Account Deleted!");
+    await expect(this.deleteAccountMsg).toHaveText(dataObject.status);
+    await this.page.close();
   }
 }
 

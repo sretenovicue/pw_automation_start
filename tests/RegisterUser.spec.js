@@ -23,7 +23,7 @@ await loginPage.createAccount();
 
 await loginPage.clickOnContinueBtn();
 
-await loginPage.deleteAccount();
+await loginPage.deleteAccountAndCloseApp();
 
 
 });
