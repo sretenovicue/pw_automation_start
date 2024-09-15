@@ -13,7 +13,6 @@
     "allure-playwright": "^3.0.0-beta.12"
   },
   "dependencies": {
-    "@estruyf/github-actions-reporter": "^1.9.2",
     "dotenv": "^16.4.5"
   }
 }
