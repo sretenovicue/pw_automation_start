@@ -42,7 +42,7 @@ jobs:
     needs: test
     environment:
       name: github-pages
-      url: ${{ https://sretenovicue.github.io/pw_automation_start }}
+      url: ${{ 'https://sretenovicue.github.io/pw_automation_start' }}
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to GitHub Pages
